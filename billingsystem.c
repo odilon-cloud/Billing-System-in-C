@@ -30,7 +30,9 @@ void main()
     case '3':
     deleterecords();break;
     case '4':
-    ();break;
+    searchrecords();break;
+    case '5':
+    modifyrecords();break;
 
     }
 }
