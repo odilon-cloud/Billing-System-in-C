@@ -35,7 +35,7 @@ void invoice(char name[50],char date[50],char phone[20])
 	}
 void bodyinvoice(char productname[30],int quantity,float price)
 {
-       printf("%s\t\t%d\t\t%.2f\t\t\n",productname,quantity,quantity*price);
+       printf("%s\t\t%d\t\t%.2f\t\t\n",item.productname,quantity,quantity*price);
 
     printf("\n-------------------------------------------------------");
 }
@@ -84,7 +84,7 @@ void add_item()
     int i,n;
     FILE *f1;
     float total=0;
-
+    fgetc(stdin);
     printf("\nPlease enter the name of the customer:\t");
     fgets(c.custoname,50,stdin);
     c.custoname[strlen(c.custoname)-1] = 0;
@@ -95,13 +95,13 @@ void add_item()
     scanf("%d",c.phone,20,stdin);
     c.phone[strlen(c.phone)-1] = 0;
     printf("Please enter the number of items: \t");
-    scanf("d",&n);
+    scanf("%d",&n);
     c.itemssold=n;
     for(i=0;i<n;i++)
     {
         fgetc(stdin);
         printf("\n\n");
-        printf("Please enter the item: %d\t",i+1);
+        printf("Please enter the product: %d\t",i+1);
         fgets(c.item1[i].productname,20,stdin);
         c.item1[i].productname[strlen(c.item1[i].productname)-1] = 0;
         printf("Please enter the quantity:\t");
