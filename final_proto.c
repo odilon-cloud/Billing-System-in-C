@@ -1,3 +1,6 @@
+
+
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -7,8 +10,7 @@ struct item
 	char productname[20];
 	int quantity;
 	int price;
-}
-item;
+};
 struct customer
 {
     char custoname[50];
@@ -34,9 +36,9 @@ void invoice(char name[50],char date[50],char phone[20])
 	printf("Items\t\tQty\t\tTotal\t\t");
 	printf("\n--------------------------------------------------\n\n");
 	}
-void bodyinvoice(char productname[20],int quantity,float price)
+void bodyinvoice(char productname[20],int quantity,int price)
 {
-       printf("%s\t\t%d\t\t%.2f\t\t\n",productname,quantity,quantity*price);
+       printf("%s\t\t%d\t\t%d\t\t\n",productname,quantity,quantity*price);
 
     printf("\n-------------------------------------------------------");
 }
@@ -108,13 +110,13 @@ void add_item()
         printf("Please enter the quantity:\t");
         scanf("%d",&c.item1[i].quantity);
         printf("Please enter the unit price:\t");
-        scanf("%.2f",&c.item1[i].price);
+        scanf("%d",&c.item1[i].price);
         total+=c.item1[i].quantity*c.item1[i].price;
     }
     invoice(c.custoname,c.date,c.mobile);
     for (i=0;i<c.itemssold;i++)
     {
-     bodyinvoice(c.item1[1].productname,c.item1[i].quantity,c.item1[i].price);
+     bodyinvoice(c.item1[i].productname,c.item1[i].quantity,c.item1[i].price);
 
     }
     grandtot(total);
@@ -135,7 +137,7 @@ void add_item()
 
 }
 
-void display()
+/*void display()
 {
     int a=0;
     FILE *f1;
@@ -161,8 +163,8 @@ void display()
     printf("\n\n Press Any key to go back");
     //getch();
 
-}
-void deletefile()
+}*/
+/*void deletefile()
 {
     FILE *f2,*f3;
     char productname[20];
@@ -187,7 +189,7 @@ void deletefile()
     rename ("rec1.txt","Records.txt");
 
 
-}
+}*/
 
 
 
@@ -200,7 +202,7 @@ void main()
     switch(open)
            {
                case 1: add_item(); break;
-               case 2: display(); break;
+               //case 2: display(); break;
                case 3:     break;
            }
 
