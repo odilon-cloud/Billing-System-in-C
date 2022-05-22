@@ -14,10 +14,11 @@ struct customer
     char custoname[50];
     char date [50];
     int itemssold;
-    char phone[20];
+    char mobile[20];
     struct item item1[50];
-}
-c;
+}c;
+
+
 void invoice(char name[50],char date[50],char phone[20])
 {
 
@@ -27,15 +28,15 @@ void invoice(char name[50],char date[50],char phone[20])
 	printf("\n\t    -----------------------");
 	printf("\nDate:%s",date);
 	printf("\nInvoice To : %s",name);
-	printf("\nMobile no. : %s",phone);
+	printf("\nMobile no. : %d",phone);
 	printf("\n");
 	printf("--------------------------------------------------\n");
 	printf("Items\t\tQty\t\tTotal\t\t");
 	printf("\n--------------------------------------------------\n\n");
 	}
-void bodyinvoice(char productname[30],int quantity,float price)
+void bodyinvoice(char productname[20],int quantity,float price)
 {
-       printf("%s\t\t%d\t\t%.2f\t\t\n",item.productname,quantity,quantity*price);
+       printf("%s\t\t%d\t\t%.2f\t\t\n",productname,quantity,quantity*price);
 
     printf("\n-------------------------------------------------------");
 }
@@ -92,8 +93,8 @@ void add_item()
     fgets(c.date,50,stdin);
     c.date[strlen(c.date)-1]=0;
     printf("\nPlease enter the number of tel: \t");
-    scanf("%d",c.phone,20,stdin);
-    c.phone[strlen(c.phone)-1] = 0;
+    scanf("%s",c.mobile,20,stdin);
+    c.mobile[strlen(c.mobile)-1] = 0;
     printf("Please enter the number of items: \t");
     scanf("%d",&n);
     c.itemssold=n;
@@ -107,13 +108,14 @@ void add_item()
         printf("Please enter the quantity:\t");
         scanf("%d",&c.item1[i].quantity);
         printf("Please enter the unit price:\t");
-        scanf("%f",&c.item1[i].price);
+        scanf("%.2f",&c.item1[i].price);
         total+=c.item1[i].quantity*c.item1[i].price;
     }
-    invoice(c.custoname,c.date,c.phone);
+    invoice(c.custoname,c.date,c.mobile);
     for (i=0;i<c.itemssold;i++)
     {
-    bodyinvoice(c.item1[1].productname,c.item1[i].quantity,c.item1[i].price);
+     bodyinvoice(c.item1[1].productname,c.item1[i].quantity,c.item1[i].price);
+
     }
     grandtot(total);
     printf("\n DO YOU WANT TO SAVE THE FOLLOWING TRANSACTION (Y/N)");
@@ -121,7 +123,7 @@ void add_item()
     if(!bill=='y');
     {
         f1 =fopen("invoice.txt","a+");
-        fwrite(&c,sizeof(struct item),1,f1);
+        fwrite(&c,sizeof(c),1,f1);
         if(!fwrite==0)
             printf("\n SAVED SUCCESSFULLY");
         else
@@ -199,7 +201,7 @@ void main()
            {
                case 1: add_item(); break;
                case 2: display(); break;
-               case 3:  break;
+               case 3:     break;
            }
 
 }
