@@ -28,7 +28,7 @@ void invoice(char name[50],char date[50],char phone[20])
 	printf("\n\t    -----------------------");
 	printf("\nDate:%s",date);
 	printf("\nInvoice To : %s",name);
-	printf("\nMobile no. : %d",phone);
+	printf("\nMobile no. : %s",phone);
 	printf("\n");
 	printf("--------------------------------------------------\n");
 	printf("Items\t\tQty\t\tTotal\t\t");
@@ -93,7 +93,7 @@ void add_item()
     fgets(c.date,50,stdin);
     c.date[strlen(c.date)-1]=0;
     printf("\nPlease enter the number of tel: \t");
-    scanf("%s",c.mobile,20,stdin);
+    fgets(c.mobile,20,stdin);
     c.mobile[strlen(c.mobile)-1] = 0;
     printf("Please enter the number of items: \t");
     scanf("%d",&n);
@@ -205,5 +205,4 @@ void main()
            }
 
 }
-
 
